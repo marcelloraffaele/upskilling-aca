@@ -14,3 +14,6 @@ $DEFAULT_IMAGE="ghcr.io/marcelloraffaele/hello:main"
 az containerapp create --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP --environment $CONTAINERAPPS_ENVIRONMENT `
     --image $DEFAULT_IMAGE `
     --target-port 8080 --ingress external --query properties.configuration.ingress.fqdn
+
+
+az containerapp show --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP -o yaml > export.yaml

@@ -13,6 +13,8 @@ $UNDER_CONSTRUCTION_IMAGE="ghcr.io/marcelloraffaele/hello:under-construction"
 az containerapp revision list --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP -o table
 az containerapp revision list --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP -o table --all
 
+az containerapp revision show --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP --revision "hello--0000003" -o yaml
+
 az containerapp update --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP --image $GREEN_IMAGE
 
 az containerapp revision list --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP -o table
