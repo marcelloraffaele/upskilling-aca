@@ -10,13 +10,26 @@ param(
     [string]$HOWMANY = "5"
 )
 
-$RESOURCE_GROUP="apim-demo-rg"
-$CONTAINERAPPS_ENVIRONMENT="demo-public-env"
+Get-Content .env | ForEach-Object {
+    if ($_ -match '^([^=]+)=(.*)$') {
+        $name = $matches[1].Trim('"')
+        $value = $matches[2].Trim('"')
+        Set-Variable -Name $name -Value $value -Scope Global
+        Write-Host "$name = $value"
+    }
+}
+#or
+# init this vars
+#RESOURCE_GROUP="<your-resource-group>"
+#CONTAINERAPPS_ENVIRONMENT="<your-containerapp-environment>"
+#APPLICATION_NAME="<your-application-name>"
+
 $APPLICATION_NAME="hello"
 $fqdn = az containerapp show --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP `
     --query "properties.configuration.ingress.fqdn" --output tsv
 
 $url = "https://$fqdn/api/version"
+Write-Host "Testing URL: $url"
 
 if ($HOWMANY -eq "forever") {
     Write-Host "Running forever... Press Ctrl+C to stop"
