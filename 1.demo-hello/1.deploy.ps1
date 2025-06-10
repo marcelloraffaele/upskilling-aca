@@ -1,20 +1,12 @@
 # this demo is for already existing Azure Container Apps environment
 # if you need to create a new environment, please refer to https://learn.microsoft.com/en-us/azure/container-apps/tutorial-deploy-first-app-cli?tabs=bash
 
-## init vars from .env
-Get-Content .env | ForEach-Object {
-    if ($_ -match '^([^=]+)=(.*)$') {
-        $name = $matches[1].Trim('"')
-        $value = $matches[2].Trim('"')
-        Set-Variable -Name $name -Value $value -Scope Global
-        Write-Host "$name = $value"
-    }
-}
+# init vars from .env
+.\0.init-variables.ps1
 #or
-# init this vars
-#RESOURCE_GROUP="<your-resource-group>"
-#CONTAINERAPPS_ENVIRONMENT="<your-containerapp-environment>"
-#APPLICATION_NAME="<your-application-name>"
+#$RESOURCE_GROUP="<your-resource-group>"
+#$CONTAINERAPPS_ENVIRONMENT="<your-containerapp-environment>"
+#$APPLICATION_NAME="<your-application-name>"
 
 $DEFAULT_IMAGE="ghcr.io/marcelloraffaele/hello:main"
 

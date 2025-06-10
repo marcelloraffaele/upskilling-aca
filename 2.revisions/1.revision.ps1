@@ -1,21 +1,12 @@
 # revisions
 # https://learn.microsoft.com/en-us/cli/azure/containerapp/revision?view=azure-cli-latest
 
-## init vars from .env
-```powershell
-Get-Content ../.env | ForEach-Object {
-    if ($_ -match '^([^=]+)=(.*)$') {
-        $name = $matches[1].Trim('"')
-        $value = $matches[2].Trim('"')
-        Set-Variable -Name $name -Value $value -Scope Global
-#        Write-Host "Set variable: $name = $value"
-    }
-}
+# init vars from .env
+.\0.init-variables.ps1
 #or
-# init this vars
-#RESOURCE_GROUP="<your-resource-group>"
-#LOCATION="<your-location>"
-#CONTAINERAPPS_ENVIRONMENT="<your-containerapp-environment>"
+#$RESOURCE_GROUP="<your-resource-group>"
+#$CONTAINERAPPS_ENVIRONMENT="<your-containerapp-environment>"
+#$APPLICATION_NAME="<your-application-name>"
 
 $APPLICATION_NAME = "todo-app"
 az containerapp revision list --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP -o table
