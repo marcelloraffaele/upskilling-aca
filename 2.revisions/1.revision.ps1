@@ -8,11 +8,10 @@
 #$CONTAINERAPPS_ENVIRONMENT="<your-containerapp-environment>"
 #$APPLICATION_NAME="<your-application-name>"
 
-$APPLICATION_NAME = "todo-app"
 az containerapp revision list --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP -o table
 #az containerapp revision list --name $APPLICATION_NAME --resource-group $RESOURCE_GROUP --all -o table
 
-$REVISION_NAME = "todo-app--0000001"
+$REVISION_NAME = "todo-app--0000005"
 az containerapp revision show --name $APPLICATION_NAME --revision $REVISION_NAME --resource-group $RESOURCE_GROUP
 
 
