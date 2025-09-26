@@ -62,3 +62,4 @@ az containerapp ingress traffic set --name $APPLICATION_NAME --resource-group $R
 # swap the labels of the revisions
 az containerapp revision label swap -n $APPLICATION_NAME -g $RESOURCE_GROUP `
     --source staging --target prod
+

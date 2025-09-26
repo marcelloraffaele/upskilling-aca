@@ -1,0 +1,114 @@
+id: /subscriptions/...
+identity:
+  type: None
+location: Italy North
+name: usecase2
+properties:
+  configuration:
+    activeRevisionsMode: Single
+    dapr: null
+    identitySettings: []
+    ingress:
+      additionalPortMappings: null
+      allowInsecure: false
+      clientCertificateMode: null
+      corsPolicy:
+        allowedOrigins:
+        - '*'
+      customDomains: null
+      exposedPort: 0
+      external: true
+      fqdn: usecase2....
+      ipSecurityRestrictions: null
+      stickySessions: null
+      targetPort: 8080
+      traffic:
+      - latestRevision: true
+        weight: 100
+      transport: Auto
+    maxInactiveRevisions: 100
+    registries: null
+    runtime: null
+    secrets: null
+    service: null
+  customDomainVerificationId: ...
+  delegatedIdentities: []
+  environmentId: /subscriptions/...
+  eventStreamEndpoint: https://italynorth....
+  managedEnvironmentId: /subscriptions/...
+  outboundIpAddresses:
+  - 4.232.216.223
+  - 4.232.216.232
+  - 4.232.216.240
+  - 4.232.216.233
+  - 172.213.194.172
+  - 172.213.194.150
+  - 172.213.194.184
+  - 172.213.194.148
+  - 172.213.194.157
+  - 172.213.194.146
+  - 4.232.216.124
+  - 4.232.216.181
+  - 4.232.216.239
+  - 4.232.216.96
+  - 172.213.196.51
+  - 172.213.196.82
+  - 172.213.196.79
+  - 172.213.196.80
+  - 172.213.196.77
+  - 172.213.196.65
+  - 172.213.105.112
+  provisioningState: Succeeded
+  runningStatus: Running
+  template:
+    containers:
+    - image: ghcr.io/marcelloraffaele/hello:health-probe
+      name: usecase2
+      resources:
+        cpu: 0.5
+        ephemeralStorage: 2Gi
+        memory: 1Gi
+      probes:
+      - type: Liveness
+        httpGet:
+          path: "/liveness"
+          port: 8080
+        initialDelaySeconds: 1
+        periodSeconds: 3
+        failureThreshold: 3
+      - type: Readiness
+        httpGet:
+          path: "/readiness"
+          port: 8080
+        initialDelaySeconds: 1
+        periodSeconds: 5
+        failureThreshold: 3
+      - type: Startup
+        httpGet:
+          path: "/started"
+          port: 8080
+        initialDelaySeconds: 1
+        periodSeconds: 5
+        failureThreshold: 3
+      env:
+      - name: "COLOR_MODE"
+        value: "BLUE"
+    initContainers: null
+    revisionSuffix: ''
+    scale:
+      cooldownPeriod: 300
+      pollingInterval: 30
+      minReplicas: 1
+      maxReplicas: 5
+      rules:
+      - name: httpscalingrule
+        custom:
+          type: http
+          metadata:
+            concurrentRequests: '50'
+    serviceBinds: null
+    terminationGracePeriodSeconds: null
+    volumes: null
+  workloadProfileName: Consumption
+resourceGroup: apim-demo-rg
+type: Microsoft.App/containerApps

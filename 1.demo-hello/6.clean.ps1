@@ -7,5 +7,5 @@
 #$CONTAINERAPPS_ENVIRONMENT="<your-containerapp-environment>"
 #$APPLICATION_NAME="<your-application-name>"
 
-az containerapp delete -g $RESOURCE_GROUP -n $APPLICATION_NAME
+az containerapp delete -g $RESOURCE_GROUP -n $APPLICATION_NAME -y
 
