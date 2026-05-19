@@ -24,6 +24,7 @@ $fqdn = az containerapp show --name $APPLICATION_NAME --resource-group $RESOURCE
 $url = "https://$fqdn/api/version"
 Write-Host "Testing URL: $url"
 
+$HOWMANY = "forever"
 if ($HOWMANY -eq "forever") {
     Write-Host "Running forever... Press Ctrl+C to stop"
     while ($true) {

@@ -9,3 +9,6 @@
 
 az containerapp delete -g $RESOURCE_GROUP -n $APPLICATION_NAME -y
 
+$APPLICATION_NAME="hello-multirevision"
+
+az containerapp delete -g $RESOURCE_GROUP -n $APPLICATION_NAME -y
